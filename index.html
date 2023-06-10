@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Knight Rider</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<style>
+    body{
+        background-color: #030307;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    body>h1{
+        position: absolute;
+        top: 150px;
+        color: #944343;
+        font-size: 25px;
+    }
+
+    #line1{
+        width: 900px;
+        height: 0;
+        top: 250px;
+        position: absolute;
+        border:2px solid white;
+    }
+    #line2{
+        width: 900px;
+        height: 0;
+        top: 330px;
+        position: absolute;
+        border:2px solid white;
+    }
+
+
+
+    div{
+        position: absolute;
+        background: #ffffff;
+        height: 30px;
+        width: 100px;
+        border-radius: 10px;
+    }
+
+    #box1{
+        top: 275px;
+        left: 450px;
+    }
+
+    #box2{
+        top: 275px;
+        left: 560px;
+    }
+
+    #box3{
+        top: 275px;
+        left: 670px;
+    }
+
+    #box4{
+        top: 275px;
+        left: 780px;
+    }
+
+    #box5{
+        top: 275px;
+        left: 890px;
+    }
+
+    #box6{
+        top:275px;
+        left:1000px;
+    }
+
+
+    #start,#stop{
+        position: relative;
+        border: 2px solid white;
+        background: black;
+        color: white;
+        font-size: 10px;
+        padding: 10px 20px;
+        margin: 10px;
+        top: 400px;
+
+
+    }
+
+</style>
+<body>
+
+<h1>JavaScript Knight Rider</h1>
+<div id="line1"></div>
+<div id="line2"></div>
+
+
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+<div id="box5"></div>
+<div id="box6"></div>
+
+
+<button id="start" type="button" class="btn btn-primary">start</button>
+<button id="stop" type="button" class="btn btn-primary">stop</button>
+
+<audio id="audio" src="/assignment/assignment8/assets/Knight Rider Sms ! Knight Rider ! Theme.mp3"></audio>
+
+
+<script src="../../assignment/assignment%207/SPA/assets/js/jquery-3.6.1.min.js"></script>
+
+
+<script>
+    var colors = ['red', 'rgb(122,56,8)', 'rgba(150,37,37,0.68)', 'white'];
+    let count = 0;
+    let revIndex = 0;
+    let timeId;
+
+    $("#start").click(function () {
+        $("audio")[0].play();
+        clearInterval(timeId);
+        timeId = setInterval(changeColor, 100);
+    });
+
+    $("#stop").click(function () {
+        $("audio")[0].pause();
+        clearInterval(timeId);
+    });
+
+    function changeColor() {
+        if (count == 20) {
+            count = 0;
+            revIndex=0;
+        }
+        $("#box1").css('background-color', colors[count]);
+        $("#box2").css('background-color', colors[count - 1]);
+        $("#box3").css('background-color', colors[count - 2]);
+        $("#box4").css('background-color', colors[count - 3]);
+        $("#box5").css('background-color', colors[count - 4]);
+        $("#box6").css('background-color', colors[count - 5]);
+
+        if (count >= 10) {
+            $("#box1").css('background-color', colors[revIndex - 5]);
+            $("#box2").css('background-color', colors[revIndex - 4]);
+            $("#box3").css('background-color', colors[revIndex - 3]);
+            $("#box4").css('background-color', colors[revIndex - 2]);
+            $("#box5").css('background-color', colors[revIndex - 1]);
+            $("#box6").css('background-color', colors[revIndex]);
+            revIndex++;
+        }
+        count++;
+    }
+
+</script>
+
+
+
+</body>
+
+
+
+
+
+</html>

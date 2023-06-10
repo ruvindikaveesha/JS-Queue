@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que Process</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+
+
+
+    <style>
+        .title-div{
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        h1{
+            position: absolute;
+            color: whitesmoke;
+            text-transform: uppercase;
+            font-family: "Readex Pro", sans-serif;
+        }
+        section{
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #2B2B2B;
+        }
+
+        .box{
+            width: 150px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: whitesmoke;
+            margin: 30px;
+        }
+
+        .start-div{
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .center-div{
+            display: flex;
+            justify-content: center;
+        }
+
+        .end-div{
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+
+</head>
+<body>
+<div class="title-div">
+    <h1 >Que Assignment </h1>
+</div>
+
+<section>
+    <div class="container">
+        <div class="start-div">
+            <div id="b1" class="box"></div>
+        </div>
+        <hr>
+        <div class="center-div">
+            <div id="b2" class="box"></div>
+            <div id="b3" class="box"></div>
+            <div id="b4" class="box"></div>
+            <div id="b5" class="box"></div>
+        </div>
+        <hr>
+        <div class="end-div">
+            <div id="b6" class="box"></div>
+        </div>
+    </div>
+</section>
+
+<script src="../../assignment%207"></script>
+
+
+<script>
+    var boxId = [$('#b1'),$('#b2'),$('#b3'),$('#b4'),$('#b5'),$('#b6')];
+    var color = ["beige", "lightpink", "red", "green", "blue", "yellow"];
+
+    setInterval(assignColor,"300");
+
+    function mixArray() {
+        var tempColor=new Array();
+        tempColor.push(color[5]);
+        for (let i = 0; i < boxId.length; i++) {
+            tempColor.push(color[i]);
+        }
+        color = tempColor;
+    }
+
+    function assignColor() {
+        mixArray();
+        for (let index = 0; index < boxId.length; index++) {
+            boxId[index].css('background-color', color[index]);
+        }
+    }
+</script>
+</body>
+</html>
